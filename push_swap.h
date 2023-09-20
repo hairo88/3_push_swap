@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:01:29 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/13 16:46:24 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:26:33 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 typedef struct s_linked_tag
 {
 	int					value;
-	// int					tail;
+	int					index;
 	struct s_linked_tag	*next;
 }	t_linked_tag;
 
@@ -37,16 +37,27 @@ typedef struct s_double_stack
 	int				tail_b;
 }	t_double_stack;
 
-
 t_linked_tag	*create_list(void);
 void			delete_list(t_linked_tag *list);
 void			clear_list(t_linked_tag *list);
-void			add_elem(t_linked_tag	*list, int value);
+t_linked_tag	*search_tail(t_linked_tag *list);
+
+int				add_elem(t_linked_tag	*list, int value);
+
 void			delete_list(t_linked_tag *list);
 void			print_list(t_linked_tag *list);
-t_linked_tag	*pop(t_linked_tag *list);
+
+int				pop_a(t_double_stack *head_stack);
+int				pop_b(t_double_stack *head_stack);
 
 //operation.c
-t_linked_tag	*ra(t_linked_tag *stack_a, t_double_stack *head_stack);
+void	sa(t_double_stack *head_stack);
+void	sb(t_double_stack *head_stack);
+void	ra(t_double_stack *head_stack);
+void	rb(t_double_stack *head_stack);
+void	rra(t_double_stack *head_stack);
+void	rrb(t_double_stack *head_stack);
+void	pa(t_double_stack *head_stack);
+void	pb(t_double_stack *head_stack);
 
 #endif
