@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   find_number.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 13:24:53 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/21 18:07:14 by kotainou         ###   ########.fr       */
+/*   Created: 2023/09/21 21:18:25 by kotainou          #+#    #+#             */
+/*   Updated: 2023/09/21 21:42:36 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	find_number(t_double_stack *head_stack, int number)
 {
-	char	out_put;
+	t_linked_tag	*list;
+	int				i;
+	int				ret_number;
 
-	if (n == -2147483648)
+	list = head_stack->stack_a->next;
+	i = 0;
+	ret_number = -1;
+	while (list != head_stack->stack_a)
 	{
-		write(fd, "-2147483648", 11);
-		return ;
+		// printf("search = [%d] ", list->value);
+		if (number == list->value)
+			ret_number = i;
+		i++;
+		list = list->next;
 	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n *= -1;
-	}
-	if (10 <= n)
-		ft_putnbr_fd(n / 10, fd);
-	out_put = n % 10 + '0';
-	write(fd, &out_put, 1);
+	return (ret_number);
 }

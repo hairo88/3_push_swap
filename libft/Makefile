@@ -1,7 +1,7 @@
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
 INCL = libft.h
+CFLAGS = -Wall -Wextra -Werror -I$(INCL)
 SRCS =  ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -37,30 +37,42 @@ SRCS =  ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
-
 OBJS = $(SRCS:.c=.o)
 
-PRIDIR = ./ft_printf
-PRIBFT = $(PRIDIR)/libftprintf.a
+SRCS += ./ft_printf/new_printf.c \
+	./ft_printf/printf_utils.c \
+	./ft_printf/put_dec_to_hex.c \
+	./ft_printf/put_nbr.c \
+	./ft_printf/put_pointer.c \
+	./ft_printf/put_string.c
+
+OBJS += ./ft_printf/new_printf.o \
+	./ft_printf/printf_utils.o \
+	./ft_printf/put_dec_to_hex.o \
+	./ft_printf/put_nbr.o \
+	./ft_printf/put_pointer.o \
+	./ft_printf/put_string.o
+
+INCL += -Ift_printf.h
+
+
+# PRIDIR = ./ft_printf
+# PRIBFT = $(PRIDIR)/libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(PRIBFT)
+$(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-%.o: %.c $(INCL)
-	$(CC) $(CFLAGS) -c $< -o $@ -I.
-
-$(PRIBFT):
-	$(MAKE) -C $(PRIDIR)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(MAKE) fclean -C $(PRIDIR)
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME) $(PRIBFT)
+	rm -f $(NAME)
 
 re: fclean all
 

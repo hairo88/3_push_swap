@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:38 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/23 13:50:16 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:17:41 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 # include <limits.h>
 
+# include "ft_printf/ft_printf.h"
+
 int		ft_isalpha(int c);
 
 int		ft_isdigit(int c);
@@ -26,7 +28,7 @@ int		ft_isalnum(int c);
 
 int		ft_isascii(int c);
 
-int		ft_isprint(int c);
+// int		ft_isprint(int c);
 
 size_t	ft_strlen(const char *str);
 
@@ -84,6 +86,6 @@ void	ft_putstr_fd(char *s, int fd);
 
 void	ft_putendl_fd(char *s, int fd);
 
-void	ft_putnbr_fd(int n, int fd);
+// void	ft_putnbr_fd(int n, int fd);
 
 #endif

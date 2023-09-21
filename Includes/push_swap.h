@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:01:29 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/20 18:26:33 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:37:14 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <limits.h>
 
-#include "libft/libft.h"
-#include "libft/get_next_line/get_next_line.h"
-#include "libft/ft_printf/ft_printf.h"
+#include "../libft/libft.h"
+#include "../libft/get_next_line/get_next_line.h"
+#include "../libft/ft_printf/ft_printf.h"
 
 typedef struct s_linked_tag
 {
@@ -36,6 +37,14 @@ typedef struct s_double_stack
 	int				tail_a;
 	int				tail_b;
 }	t_double_stack;
+
+typedef struct s_min_max
+{
+	int	max_index;
+	int	max_value;
+	int	min_index;
+	int	min_value;
+}	t_min_max;
 
 t_linked_tag	*create_list(void);
 void			delete_list(t_linked_tag *list);
@@ -59,5 +68,24 @@ void	rra(t_double_stack *head_stack);
 void	rrb(t_double_stack *head_stack);
 void	pa(t_double_stack *head_stack);
 void	pb(t_double_stack *head_stack);
+void	ss(t_double_stack *head_stack);
+void	rr(t_double_stack *head_stack);
+void	rrr(t_double_stack *head_stack);
+
+//check_sort.c
+int		is_sorted(t_double_stack *head_stack);
+
+//three_sort.c
+void	run_order_thr(t_double_stack *head_stack);
+// void	run_order_thr(t_double_stack *head_stack, int max_index, int min_index);
+
+//six_sort.c
+void	six_sort_main(t_double_stack *head_stack);
+
+//minizer.c
+void	minizer_stack(t_double_stack *head_stack);
+
+//find_number.c
+int		find_number(t_double_stack *head_stack, int number);
 
 #endif

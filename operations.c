@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:56:14 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/20 18:28:31 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:44:50 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,68 +14,37 @@
 
 void	sa(t_double_stack *head_stack)
 {
-	int				top_value;
-	t_linked_tag	*elem;
-	t_linked_tag	*third_ptr;
-	t_linked_tag	*list;
+	int		tmp;
 
-	elem = (t_linked_tag*)malloc(sizeof(t_linked_tag));
-	if (elem == NULL)
+	tmp = 0;
+	if (head_stack->tail_a > 1)
 	{
-		write(1, "Error\n", ft_strlen("Error\n"));
-		exit(1);
+		tmp = head_stack->stack_a->next->value;
+		head_stack->stack_a->next->value = head_stack->stack_a->next->next->value;
+		head_stack->stack_a->next->next->value = tmp;
 	}
-	if (head_stack->tail_a < 2)
-	{
-		printf("list a のリストが少ない\n");
-		exit(1);
-	}
-	top_value = pop_a(head_stack);
-	third_ptr = head_stack->stack_a->next->next;
-	head_stack->stack_a->next->next = elem;
-	elem->value = top_value;
-	elem->next = third_ptr;
-	elem->index = head_stack->stack_a->next->index + 1;
-	list = head_stack->stack_a->next->next->next;
-	while (list != head_stack->stack_a)
-	{
-		list->index += 1;
-		list = list->next;
-	}
+	ft_printf("sa\n");
 }
 
 void	sb(t_double_stack *head_stack)
 {
-	int				top_value;
-	t_linked_tag	*elem;
-	t_linked_tag	*third_ptr;
-	t_linked_tag	*list;
+	int		tmp;
 
-	elem = (t_linked_tag*)malloc(sizeof(t_linked_tag));
-	if (elem == NULL)
+	tmp = 0;
+	if (head_stack->tail_b > 1)
 	{
-		write(1, "Error\n", ft_strlen("Error\n"));
-		exit(1);
+		tmp = head_stack->stack_b->next->value;
+		head_stack->stack_b->next->value = head_stack->stack_b->next->next->value;
+		head_stack->stack_b->next->next->value = tmp;
 	}
-	if (head_stack->tail_b < 2)
-	{
-		printf("list a のリストが少ない\n");
-		exit(1);
-	}
-	top_value = pop_b(head_stack);
-	third_ptr = head_stack->stack_b->next->next;
-	head_stack->stack_b->next->next = elem;
-	elem->value = top_value;
-	elem->next = third_ptr;
-	elem->index = head_stack->stack_b->next->index + 1;
-	list = head_stack->stack_b->next->next->next;
-	while (list != head_stack->stack_b)
-	{
-		list->index += 1;
-		list = list->next;
-	}
-	printf("b\n");
-	print_list(head_stack->stack_b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_double_stack *head_stack)
+{
+	sa(head_stack);
+	sb(head_stack);
+	ft_printf("ss\n");
 }
 
 void	ra(t_double_stack *head_stack)
@@ -85,12 +54,21 @@ void	ra(t_double_stack *head_stack)
 	top = head_stack->stack_a->next->value;
 	add_elem(head_stack->stack_a, top);
 	pop_a(head_stack);
+	ft_printf("ra\n");
 }
 
 void	rb(t_double_stack *head_stack)
 {
 	add_elem(head_stack->stack_b, head_stack->stack_b->next->value);
 	pop_b(head_stack);
+	ft_printf("rb\n");
+}
+
+void	rr(t_double_stack *head_stack)
+{
+	ra(head_stack);
+	rb(head_stack);
+	ft_printf("rr\n");
 }
 
 void	rra(t_double_stack *head_stack)
@@ -103,6 +81,7 @@ void	rra(t_double_stack *head_stack)
 	head_stack->stack_a = tail;
 	head_stack->stack_b->next->value = tail->value;
 	head_stack->stack_a->next = tmp;
+	ft_printf("rra\n");
 }
 
 void	rrb(t_double_stack *head_stack)
@@ -115,6 +94,14 @@ void	rrb(t_double_stack *head_stack)
 	head_stack->stack_b = tail;
 	head_stack->stack_b->next->value = tail->value;
 	head_stack->stack_b->next = tmp;
+	ft_printf("rrb\n");
+}
+
+void	rrr(t_double_stack *head_stack)
+{
+	rra(head_stack);
+	rrb(head_stack);
+	ft_printf("rrr\n");
 }
 
 void	pa(t_double_stack *head_stack)
@@ -127,20 +114,20 @@ void	pa(t_double_stack *head_stack)
 	list = (t_linked_tag*)malloc(sizeof(t_linked_tag));
 	if (list == NULL)
 	{
-		printf("メモリ割り当て失敗\n");
+		ft_printf("メモリ割り当て失敗\n");
 		exit(1);
 	}
 	top = head_stack->stack_a;
 	tail = search_tail(head_stack->stack_a);
-	printf("top [%p]\n", list);
+	ft_printf("top [%p]\n", list);
 	head_stack->stack_a = list;
 	// list->value = pop_b(head_stack);
-	printf("list->value[%d]\n", list->value);
+	ft_printf("list->value[%d]\n", list->value);
 	list->next = top;
 	top->value = pop_b(head_stack);
-	printf("list->next [%p]\n", list->next);
+	ft_printf("list->next [%p]\n", list->next);
 	tail->next = head_stack->stack_a;
-	printf("head_stack->stack_a[%p]\n", head_stack->stack_a);
+	ft_printf("head_stack->stack_a[%p]\n", head_stack->stack_a);
 	i = 0;
 	list = head_stack->stack_a->next;
 	while (list != head_stack->stack_a)
@@ -149,6 +136,7 @@ void	pa(t_double_stack *head_stack)
 		list = list->next;
 		i++;
 	}
+	ft_printf("pa\n");
 }
 
 void	pb(t_double_stack *head_stack)
@@ -161,20 +149,20 @@ void	pb(t_double_stack *head_stack)
 	list = (t_linked_tag*)malloc(sizeof(t_linked_tag));
 	if (list == NULL)
 	{
-		printf("メモリ割り当て失敗\n");
+		ft_printf("メモリ割り当て失敗\n");
 		exit(1);
 	}
 	top = head_stack->stack_b;
 	tail = search_tail(head_stack->stack_b);
-	printf("top [%p]\n", list);
+	ft_printf("top [%p]\n", list);
 	head_stack->stack_b = list;
 	// list->value = pop_a(head_stack);
-	printf("list->value[%d]\n", list->value);
+	ft_printf("list->value[%d]\n", list->value);
 	list->next = top;
 	top->value = pop_a(head_stack);
-	printf("list->next [%p]\n", list->next);
+	ft_printf("list->next [%p]\n", list->next);
 	tail->next = head_stack->stack_b;
-	printf("head_stack->stack_b[%p]\n", head_stack->stack_b);
+	ft_printf("head_stack->stack_b[%p]\n", head_stack->stack_b);
 	i = 0;
 	list = head_stack->stack_b->next;
 	while (list != head_stack->stack_b)
@@ -183,4 +171,5 @@ void	pb(t_double_stack *head_stack)
 		list = list->next;
 		i++;
 	}
+	ft_printf("pb\n");
 }

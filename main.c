@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:12:52 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/20 18:28:37 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:51:09 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@ int	main(int ac, char *av[])
 			i++;
 		}
 		print_list(head_stack->stack_a);
-		print_list(head_stack->stack_b);
-		pb(head_stack);
+		minizer_stack(head_stack);
+		printf("mini \n");
 		print_list(head_stack->stack_a);
 		printf("\n");
-		print_list(head_stack->stack_b);
+		run_order_thr(head_stack);
+		// printf("find = [%d]\n", find_number(head_stack, 3 - 1));
+		print_list(head_stack->stack_a);
 	}
 }
 

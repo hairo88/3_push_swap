@@ -1,10 +1,14 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-INCL = push_swap.h
+INCLUDES_DIR = ./Includes
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES_DIR)
 SRCS = main.c \
 	tan_houko.c \
-	operations.c
+	operations.c \
+	three_sort.c \
+	check_sort.c \
+	minizer.c \
+	find_number.c
 	
 OBJS = $(SRCS:.c=.o)
 
