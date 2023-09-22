@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:50:46 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/21 21:37:32 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:22:55 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	run_order_thr(t_double_stack *head_stack)
 	}
 	else if (find_number(head_stack, 2) == 0 && find_number(head_stack, 0) == 2)
 	{
-		ra(head_stack);
 		sa(head_stack);
+		ra(head_stack);
 	}
 	// print_list(head_stack->stack_a);
 }

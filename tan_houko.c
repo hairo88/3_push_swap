@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:40:16 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/20 18:26:16 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:23:11 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,23 @@ int		add_elem(t_linked_tag	*list, int value)
 	int				size;
 
 	// printf("elem : 0\n");
-	tail = search_tail(list);
+	size = 0;
+	tail = list;
+	while (tail->next != list)
+	{
+		tail = tail->next;
+		size++;
+	}
 	elem = (t_linked_tag*)malloc(sizeof(t_linked_tag));
 	if (elem == NULL)
 	{
 		printf("メモリの割り当てに失敗しました\n");
 		exit(1);
 	}
-	elem->index = tail->index + 1;
+	elem->index = size;
 	elem->value = value;
 	elem->next = list;
 	tail->next = elem;
-	size = elem->index + 1;
 	return (size);
 }
 

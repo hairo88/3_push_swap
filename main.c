@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:12:52 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/21 21:51:09 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:21:07 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,28 @@ int	main(int ac, char *av[])
 		head_stack->stack_a = stack_a;
 		stack_b = create_list();
 		head_stack->stack_b = stack_b;
-		// printf("%d\n", ac);
 		while ((int)i < ac)
 		{
 			head_stack->tail_a = add_elem(stack_a, ft_atoi(av[i]));
-			head_stack->tail_b = add_elem(stack_b, ft_atoi(av[i]) + 7);
+			head_stack->tail_b = add_elem(stack_b, ft_atoi(av[i]));
 			i++;
 		}
+		head_stack->tail_a = ac - 1;
 		print_list(head_stack->stack_a);
 		minizer_stack(head_stack);
-		printf("mini \n");
-		print_list(head_stack->stack_a);
-		printf("\n");
 		run_order_thr(head_stack);
+		ft_printf("\n");
+		// ra(head_stack);
+		// rra(head_stack);
+		// pb(head_stack);
+		// sa(head_stack);
+		// rb(head_stack);
+		// rrb(head_stack);
 		// printf("find = [%d]\n", find_number(head_stack, 3 - 1));
+		printf("list a\n");
 		print_list(head_stack->stack_a);
+		// printf("list b\n");
+		// print_list(head_stack->stack_b);
 	}
 }
 

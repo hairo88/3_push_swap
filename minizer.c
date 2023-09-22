@@ -6,13 +6,13 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:39:17 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/21 21:43:49 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:25:29 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	setting_stack_a_next(t_double_stack *head_stack, int *thr_stack)
+void	stack_a_loaf_array(t_double_stack *head_stack, int *thr_stack)
 {
 	t_linked_tag	*p;
 	int				i;
@@ -27,16 +27,17 @@ void	setting_stack_a_next(t_double_stack *head_stack, int *thr_stack)
 		i++;
 		p = p->next;
 	}
+	free(thr_stack);
 	printf("\n");
 }
 
-void	setting_stack_a(t_double_stack *head_stack, int *one_stack, int *two_stack)
+void	two_to_thr(t_double_stack *head_stack, int *one_stack, int *two_stack)
 {
 	int		*thr_stack;
 	int		i;
 	int		j;
 
-	thr_stack = malloc(sizeof(int *) * head_stack->tail_a);
+	thr_stack = ft_calloc(sizeof(int *), (head_stack->tail_a + 1));
 	i = 0;
 	while (i < head_stack->tail_a)
 	{
@@ -45,6 +46,7 @@ void	setting_stack_a(t_double_stack *head_stack, int *one_stack, int *two_stack)
 		{
 			if (one_stack[i] == two_stack[j])
 			{
+				// printf("%d ", two_stack[j]);
 				thr_stack[i] = j;
 				break ;
 			}
@@ -52,7 +54,9 @@ void	setting_stack_a(t_double_stack *head_stack, int *one_stack, int *two_stack)
 		}
 		i++;
 	}
-	setting_stack_a_next(head_stack, thr_stack);
+	free(one_stack);
+	free(two_stack);
+	stack_a_loaf_array(head_stack, thr_stack);
 }
 
 //重複の処理もするところ
@@ -63,9 +67,7 @@ void	bubble_sort(t_double_stack *head_stack, int *one_stack)
 	int		j;
 	int		tmp;
 
-	two_stack = malloc(sizeof(int *) * head_stack->tail_a);
-	if (two_stack == NULL)
-		exit(1);
+	two_stack = ft_calloc(sizeof(int *), (head_stack->tail_a + 1));
 	ft_memcpy(two_stack, one_stack, sizeof(int *) * head_stack->tail_a);
 	i = 0;
 	while (i < head_stack->tail_a)
@@ -85,7 +87,7 @@ void	bubble_sort(t_double_stack *head_stack, int *one_stack)
 		}
 		i++;
 	}
-	setting_stack_a(head_stack, one_stack, two_stack);
+	two_to_thr(head_stack, one_stack, two_stack);
 }
 
 void	minizer_stack(t_double_stack *head_stack)
@@ -94,9 +96,7 @@ void	minizer_stack(t_double_stack *head_stack)
 	size_t			i;
 	int				*one_stack;
 
-	one_stack = malloc(sizeof(int *) * head_stack->tail_a);
-	if (one_stack == NULL)
-		exit(1);
+	one_stack = ft_calloc(sizeof(int *), (head_stack->tail_a + 1));
 	p = head_stack->stack_a->next;
 	i = 0;
 	while (p != head_stack->stack_a)
@@ -105,5 +105,6 @@ void	minizer_stack(t_double_stack *head_stack)
 		p = p->next;
 		i++;
 	}
+	i = 0;
 	bubble_sort(head_stack, one_stack);
 }
