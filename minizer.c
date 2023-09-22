@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:39:17 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 20:03:12 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:35:01 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ void	minizer_stack(t_double_stack *head_stack)
 	one_stack = ft_calloc(sizeof(int *), (head_stack->tail_a + 1));
 	p = head_stack->stack_a->next;
 	i = 0;
-	printf("mini\n");
+	// printf("mini\n");
 	while (p != head_stack->stack_a)
 	{
 		one_stack[i] = p->value;
-		printf("%d ", p->value);
+		// printf("%d ", p->value);
 		p = p->next;
 		i++;
 	}
-	printf("mini\n");
+	// printf("mini\n");`
 	bubble_sort(head_stack, one_stack);
 }

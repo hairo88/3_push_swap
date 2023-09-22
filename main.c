@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:12:52 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 20:17:50 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:31:08 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char *av[])
 	head_stack = NULL;
 	pop_value = 0;
 	head_stack = (t_double_stack *)malloc(sizeof(t_double_stack));
-	ft_memset(head_stack, 0, 2);
+	ft_memset(head_stack, 0, sizeof(t_double_stack));
 	stack_a = create_list();
 	head_stack->stack_a = stack_a;
 	stack_b = create_list();
@@ -58,9 +58,8 @@ int	main(int ac, char *av[])
 		// print_list(head_stack->stack_b);
 	}
 	minizer_stack(head_stack);
-	// run_order_thr(head_stack);
-	// six_sort_main(head_stack);
-	print_list(head_stack->stack_a);
+	run_order_thr(head_stack);
+	six_sort_main(head_stack);
 	return (0);
 }
 

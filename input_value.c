@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:30 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 20:06:23 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:29:23 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	input_value(t_double_stack *head_stack, int ac, char *av[])
 	if (ac == 2)
 	{
 		data_value = ft_split(av[1], ' ', &num);
+		head_stack->tail_a = num;
 		while ((int)i < num)
 		{
 			if (check_input_value(data_value[i]))
