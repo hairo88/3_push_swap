@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:38 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/21 18:17:41 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 19:26:27 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 char	*ft_strtrim(char const *s1, char const *set);
 
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c, int *num);
 
 char	*ft_itoa(int n);
 

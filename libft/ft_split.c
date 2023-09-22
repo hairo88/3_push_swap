@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:46:11 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/25 08:27:02 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 19:38:43 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,13 @@ size_t count_words, char **ans)
 	}
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int *num)
 {
 	char	**ans;
 	size_t	count_words;
 
 	count_words = ft_count_words(s, c);
+	*num = count_words;
 	ans = ft_calloc(sizeof(char *), count_words + 1);
 	if (ans == NULL)
 		return (NULL);

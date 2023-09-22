@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:56:14 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 17:22:25 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:16:54 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,15 @@ void	pa(t_double_stack *head_stack)
 	}
 	top = head_stack->stack_a;
 	tail = search_tail(head_stack->stack_a);
-	ft_printf("top [%p]\n", list);
+	// ft_printf("top [%p]\n", list);
 	head_stack->stack_a = list;
 	// list->value = pop_b(head_stack);
-	ft_printf("list->value[%d]\n", list->value);
+	// ft_printf("list->value[%d]\n", list->value);
 	list->next = top;
 	top->value = pop_b(head_stack);
-	ft_printf("list->next [%p]\n", list->next);
+	// ft_printf("list->next [%p]\n", list->next);
 	tail->next = head_stack->stack_a;
-	ft_printf("head_stack->stack_a[%p]\n", head_stack->stack_a);
+	// ft_printf("head_stack->stack_a[%p]\n", head_stack->stack_a);
 	i = 0;
 	list = head_stack->stack_a->next;
 	while (list != head_stack->stack_a)
@@ -177,15 +177,10 @@ void	pb(t_double_stack *head_stack)
 	}
 	top = head_stack->stack_b;
 	tail = search_tail(head_stack->stack_b);
-	ft_printf("top [%p]\n", list);
 	head_stack->stack_b = list;
-	// list->value = pop_a(head_stack);
-	ft_printf("list->value[%d]\n", list->value);
 	list->next = top;
 	top->value = pop_a(head_stack);
-	ft_printf("list->next [%p]\n", list->next);
 	tail->next = head_stack->stack_b;
-	ft_printf("head_stack->stack_b[%p]\n", head_stack->stack_b);
 	i = 0;
 	list = head_stack->stack_b->next;
 	while (list != head_stack->stack_b)
@@ -194,7 +189,7 @@ void	pb(t_double_stack *head_stack)
 		list = list->next;
 		i++;
 	}
-	head_stack->tail_a -= 1;
+	// head_stack->tail_a -= 1;
 	head_stack->tail_b += 1;
 	ft_printf("pb\n");
 }

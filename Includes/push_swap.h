@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:01:29 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/21 21:37:14 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 19:14:28 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,8 @@ void	minizer_stack(t_double_stack *head_stack);
 
 //find_number.c
 int		find_number(t_double_stack *head_stack, int number);
+
+//input_value.c
+void	input_value(t_double_stack *head_stack, int ac, char *av[]);
 
 #endif

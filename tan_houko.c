@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:40:16 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 15:23:11 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:53:31 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		add_elem(t_linked_tag	*list, int value)
 	elem->value = value;
 	elem->next = list;
 	tail->next = elem;
+	// printf("add_ele size = [%d]\n", size);
 	return (size);
 }
 
@@ -139,7 +140,7 @@ int	pop_a(t_double_stack *head_stack)
 		sta = sta->next;
 		size++;
 	}
-	head_stack->tail_a = size;
+	head_stack->tail_a -= 1;
 	// printf("size [%d]\n", head_stack->tail_b);
 	return (value);
 }

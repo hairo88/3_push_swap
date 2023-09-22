@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:39:17 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 16:25:29 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:03:12 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void	stack_a_loaf_array(t_double_stack *head_stack, int *thr_stack)
 
 	i = 0;
 	p = head_stack->stack_a->next;
-	printf("sett ");
+	// printf("sett ");
 	while (p != head_stack->stack_a)
 	{
 		p->value = thr_stack[i];
-		printf("%d ", p->value);
+		// printf("%d ", p->value);
 		i++;
 		p = p->next;
 	}
 	free(thr_stack);
-	printf("\n");
+	// printf("\n");
 }
 
 void	two_to_thr(t_double_stack *head_stack, int *one_stack, int *two_stack)
@@ -99,12 +99,14 @@ void	minizer_stack(t_double_stack *head_stack)
 	one_stack = ft_calloc(sizeof(int *), (head_stack->tail_a + 1));
 	p = head_stack->stack_a->next;
 	i = 0;
+	printf("mini\n");
 	while (p != head_stack->stack_a)
 	{
 		one_stack[i] = p->value;
+		printf("%d ", p->value);
 		p = p->next;
 		i++;
 	}
-	i = 0;
+	printf("mini\n");
 	bubble_sort(head_stack, one_stack);
 }

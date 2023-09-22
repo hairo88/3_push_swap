@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:12:52 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 17:21:07 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/22 20:17:50 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,44 @@ int	main(int ac, char *av[])
 	pop_value = 0;
 	head_stack = (t_double_stack *)malloc(sizeof(t_double_stack));
 	ft_memset(head_stack, 0, 2);
-	if (ac == 3)
+	stack_a = create_list();
+	head_stack->stack_a = stack_a;
+	stack_b = create_list();
+	head_stack->stack_b = stack_b;
+	if (ac == 2)
 	{
-		stack_a = create_list();
-		head_stack->stack_a = stack_a;
+		input_value(head_stack, ac ,av);
+	}
+	else if (ac == 3)
+	{
 		add_elem(stack_a, ft_atoi(av[1]));
 		add_elem(stack_a, ft_atoi(av[2]));
-		print_list(head_stack->stack_a);
-		ra(head_stack);
 	}
-	else
+	else if (3 < ac)
 	{
 		i = 1;
-		stack_a = create_list();
-		head_stack->stack_a = stack_a;
-		stack_b = create_list();
-		head_stack->stack_b = stack_b;
 		while ((int)i < ac)
 		{
-			head_stack->tail_a = add_elem(stack_a, ft_atoi(av[i]));
-			head_stack->tail_b = add_elem(stack_b, ft_atoi(av[i]));
+			add_elem(stack_a, ft_atoi(av[i]));
+			// head_stack->tail_b = add_elem(stack_b, ft_atoi(av[i]));
 			i++;
 		}
 		head_stack->tail_a = ac - 1;
-		print_list(head_stack->stack_a);
-		minizer_stack(head_stack);
-		run_order_thr(head_stack);
-		ft_printf("\n");
-		// ra(head_stack);
-		// rra(head_stack);
+		head_stack->tail_b = 0;
+		// print_list(head_stack->stack_a);
+		// printf("head->stack->stail_a[%d]\n", head_stack->tail_a);
 		// pb(head_stack);
-		// sa(head_stack);
-		// rb(head_stack);
-		// rrb(head_stack);
-		// printf("find = [%d]\n", find_number(head_stack, 3 - 1));
-		printf("list a\n");
-		print_list(head_stack->stack_a);
+		// ft_printf("\n");
+		// printf("list a\n");
+		// print_list(head_stack->stack_a);
 		// printf("list b\n");
 		// print_list(head_stack->stack_b);
 	}
+	minizer_stack(head_stack);
+	// run_order_thr(head_stack);
+	// six_sort_main(head_stack);
+	print_list(head_stack->stack_a);
+	return (0);
 }
 
 // __attribute__((destructor)) static void destructor()

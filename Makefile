@@ -8,7 +8,9 @@ SRCS = main.c \
 	three_sort.c \
 	check_sort.c \
 	minizer.c \
-	find_number.c
+	find_number.c \
+	six_sort.c \
+	input_value.c
 	
 OBJS = $(SRCS:.c=.o)
 
