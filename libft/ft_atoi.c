@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:14:30 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/25 08:20:29 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:42:20 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,29 @@ static	int	ft_create_number(const char *str, int sign)
 		return (-2147483648);
 	while ('0' <= str[i] && str[i] <= '9')
 	{
-		num = num * 10 + str[i] - '0';
 		if (sign == 1 && str[i + 1])
 		{
 			if ((num == LONG_MAX / 10 && str[i + 1] - '0'
 					> LONG_MAX % 10) || (num > LONG_MAX / 10 && str[i + 1]))
-				return ((int)LONG_MAX);
+				{
+					ft_printf("Error\n");
+					exit(1);
+				}
 		}
 		else if (str[i + 1])
 		{
 			if ((num == LONG_MAX / 10 && str[i + 1] - '0' > LONG_MAX % 10 + 1)
 				|| (num > LONG_MAX / 10 && str[i + 1]))
-				return ((int)LONG_MIN);
+				{
+					ft_printf("Error\n");
+					exit(1);
+				}
+		}
+		num = num * 10 + str[i] - '0';
+		if (num > INT_MAX || num < INT_MIN)
+		{
+			ft_printf("Error\n");
+			exit(1);
 		}
 		i++;
 	}

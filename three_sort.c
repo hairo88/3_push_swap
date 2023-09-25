@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 15:50:46 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 18:19:23 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:01:00 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,19 @@ int	find_min_value(t_double_stack *head_stack)
 	return (min_value);
 }
 
+void	run_order_two(t_double_stack *head_stack)
+{
+	t_linked_tag	*p;
+	// int				one;
+
+	if (head_stack->tail_a != 2)
+		return ;
+	p = head_stack->stack_a->next;
+	if (p->value > p->next->value)
+		sa(head_stack);
+}
+
+//この関数はstack_aで適用される
 void	run_order_thr(t_double_stack *head_stack)
 {
 	int		min_value;
@@ -50,16 +63,11 @@ void	run_order_thr(t_double_stack *head_stack)
 	{
 		ra(head_stack);
 	}
-	else if (find_number(head_stack, 2) == 0 && find_number(head_stack, 0) == 2)
+	else if (find_number(head_stack, min_value + 2) == 0 && find_number(head_stack, min_value + 0) == 2)
 	{
-		sa(head_stack);
 		ra(head_stack);
+		sa(head_stack);
 	}
 	// print_list(head_stack->stack_a);
 }
-
-// void	thr_sort_main(t_double_stack *head_stack)
-// {
-// 	run_order_thr(head_stack);
-// }
 

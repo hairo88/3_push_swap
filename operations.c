@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:56:14 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 18:16:54 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:53:23 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	pa(t_double_stack *head_stack)
 		i++;
 	}
 	head_stack->tail_a += 1;
-	head_stack->tail_b -= 1;
+	// head_stack->tail_b -= 1;
 	ft_printf("pa\n");
 }
 

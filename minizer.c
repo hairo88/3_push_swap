@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:39:17 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/22 20:35:01 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:18:27 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	bubble_sort(t_double_stack *head_stack, int *one_stack)
 				two_stack[j] = tmp;
 			}
 			else if (two_stack[i] == two_stack[j])
+			{
+				ft_printf("Error\n");
 				exit(1);
+			}
 			j++;
 		}
 		i++;
