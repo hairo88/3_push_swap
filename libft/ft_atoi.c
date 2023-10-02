@@ -6,11 +6,12 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:14:30 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/24 18:42:20 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:40:32 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static	int	ft_strcmp(const char *p1, char *p2)
 {
@@ -41,7 +42,7 @@ static	int	ft_create_number(const char *str, int sign)
 
 	i = 0;
 	num = 0;
-	if (ft_strcmp(str, "-2147483648") == 0)
+	if (ft_strcmp(str, "2147483648") == 0 && sign == -1)
 		return (-2147483648);
 	while ('0' <= str[i] && str[i] <= '9')
 	{
@@ -64,7 +65,7 @@ static	int	ft_create_number(const char *str, int sign)
 				}
 		}
 		num = num * 10 + str[i] - '0';
-		if (num > INT_MAX || num < INT_MIN)
+		if (!(INT_MIN <= num && num <= INT_MAX))
 		{
 			ft_printf("Error\n");
 			exit(1);

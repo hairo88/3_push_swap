@@ -10,7 +10,12 @@ SRCS = main.c \
 	minizer.c \
 	find_number.c \
 	six_sort.c \
-	input_value.c
+	input_value.c \
+	big_sort.c \
+	new_big_sort.c \
+	operations_2.c \
+	operations_3.c \
+	tan_houko_2.c
 	
 OBJS = $(SRCS:.c=.o)
 

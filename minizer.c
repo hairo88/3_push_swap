@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:39:17 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/25 16:18:27 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:52:46 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	stack_a_loaf_array(t_double_stack *head_stack, int *thr_stack)
 	// printf("sett ");
 	while (p != head_stack->stack_a)
 	{
-		p->value = thr_stack[i];
+		p->value = thr_stack[i] + 1;
 		// printf("%d ", p->value);
 		i++;
 		p = p->next;

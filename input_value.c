@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:08:30 by kotainou          #+#    #+#             */
-/*   Updated: 2023/09/25 16:52:33 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:02:25 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ int	is_char_input(char *value)
 	num = ft_strlen(value);
 	while (i < num)
 	{
-		if (!ft_isdigit(value[i]))
+		if (!ft_isdigit(value[i]) && value[i] != '-')
+		{
 			flag = 1;
+			printf("isdigit = %c\nrnt == [%d]\n", value[i], ft_isdigit(value[i]));
+		}
 		i++;
 	}
 	return (flag);
 }
 
 //ソート済みかどうか？
+//0はソート済　１は未ソート
 int	is_sort(t_double_stack *head_stack)
 {
 	t_linked_tag	*p;
@@ -45,7 +49,7 @@ int	is_sort(t_double_stack *head_stack)
 	array = ft_calloc(sizeof(int *), (head_stack->tail_a + 1));
 	while (p != head_stack->stack_a)
 	{
-		array[i] =  p->value;
+		array[i] = p->value;
 		p = p->next;
 		i++;
 	}
@@ -67,7 +71,6 @@ void	input_value_digit(t_double_stack *head_stack, int ac, char *av[])
 	i = 1;
 	while ((int)i < ac)
 	{
-		// printf("intmax = [%d]\n", ft_atoi(av[i]));
 		add_elem(head_stack->stack_a, ft_atoi(av[i]));
 		i++;
 	}
@@ -112,7 +115,12 @@ void	input_value_main(t_double_stack *head_stack, int ac, char *av[])
 		input_value_digit(head_stack, ac, av);
 	if (ac != 1 && is_sort(head_stack))
 	{
-		printf("Error\n");
-		exit(1);
+		exit(0);
 	}
 }
+
+// -1978451668
+// -1958419719
+//  156864768
+//  235498006
+//  723222320
